@@ -1,0 +1,28 @@
+{
+  "name": "ordbok-knex",
+  "version": "0.9.0",
+  "description": "Orðbók Old Norse dictionary - SQL implementation with Knex.js",
+  "main": "index.js",
+  "repository": "https://github.com/stscoundrel/ordbok-knex.git",
+  "author": "stscoundrel <sampo@pixels.fi>",
+  "license": "MIT",
+  "private": false,
+  "engines": {
+    "node": ">=12.0.0"
+  },
+  "dependencies": {
+    "knex": "^0.21.5",
+    "old-norse-ordbok": "^0.9.0"
+  },
+  "devDependencies": {
+    "eslint": "^7.6.0",
+    "eslint-config-airbnb-base": "^14.2.0",
+    "eslint-plugin-import": "^2.22.0",
+    "ratatoskr-log": "^0.9.1",
+    "sqlite3": "^5.0.0"
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
+  }
+}
