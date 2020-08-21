@@ -1,6 +1,8 @@
 # Orðbók Knex
 
-[Old Norse](https://en.wikipedia.org/wiki/Old_Norse) dictionary for Node.js. SQL implementation with Knex.js. Uses [Orðbók](https://github.com/stscoundrel/old-norse-ordbok) for dictionary data.
+[Old Norse](https://en.wikipedia.org/wiki/Old_Norse) dictionary for Node.js. SQL implementation with [Knex.js](http://knexjs.org/).
+
+Uses [Orðbók](https://github.com/stscoundrel/old-norse-ordbok) for dictionary data.
 
 
 ### Install
@@ -18,7 +20,58 @@ npm install mysql2
 
 ### Usage
 
+Orðbók-knex offers two methods: one for setting up new database, and one for getting Knex instance tied to them. Under the hood Orðbók is used to scrape the dictionary with Puppeteer.
 
+##### Setting up the database
+```javascript
+const { createDB } = require('ordbok-knex')
+
+// Your Knew config. DO NOT define migrations folder.
+const knexConf = {
+  client: 'sqlite3',
+  useNullAsDefault: true,
+  connection: {
+    filename: './local.db',
+  },
+  pool: {
+    afterCreate: (conn, cb) => {
+      conn.run('PRAGMA foreign_keys = ON', cb);
+    },
+  },
+}
+
+// Run only once to create & populate the database.
+try {
+    const res = await createDB(knexConf)
+  } catch (err) {
+    console.log(err)
+  }
+```
+
+##### Queries
+
+```javascript
+const { getKnex } = require('ordbok-knex')
+
+/**
+ * Setup Knex.
+ * You can also do this step withour Orðbók.
+ */
+const knexConf = { // Your config }
+const knex = await getKnex(knexConf)
+
+// Any valid Knex query. 
+const result = await knex('norse')
+    .where({ startsWith: 'ó' })
+
+const result2 = await knex('english')
+    .where({ startsWith: 's' })
+
+console.log(result)
+console.log(result2)
+
+knex.destroy()
+```
 
 ### Sources
 
