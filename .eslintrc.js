@@ -11,5 +11,6 @@ module.exports = {
     semi: 0,
     'no-console': 0,
     'consistent-return': 0,
+    'no-use-before-define': 0,
   },
 }

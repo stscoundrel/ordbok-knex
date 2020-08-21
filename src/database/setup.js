@@ -9,9 +9,9 @@ const setupDB = async (clientConfig) => {
 
   try {
     await migrateTables(knex)
-    return {status: true}
-  } catch(err) {
-    return {status: false, err}
+    return { status: true, knex }
+  } catch (err) {
+    return { status: false, err }
   }
 }
 
@@ -49,5 +49,5 @@ const migrateTables = async (knex) => {
 
 module.exports = {
   setupDB,
-  getKnex
+  getKnex,
 }
