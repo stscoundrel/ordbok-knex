@@ -3,6 +3,9 @@ const up = (knex) => knex.schema
     table.increments('id').primary()
     table.string('word')
     table.string('definition')
+    table.string('type')
+    table.string('gender')
+    table.string('branch')
     table.string('startsWith')
   })
 
