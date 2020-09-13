@@ -1,6 +1,6 @@
 {
   "name": "ordbok-knex",
-  "version": "0.9.1",
+  "version": "1.0.0",
   "description": "Orðbók Old Norse dictionary - SQL implementation with Knex.js",
   "main": "index.js",
   "repository": "https://github.com/stscoundrel/ordbok-knex.git",
@@ -23,6 +23,6 @@
   },
   "scripts": {
     "lint": "eslint .",
-    "lint:fix": "eslint . --fix"
+    "fix": "eslint . --fix"
   }
 }
